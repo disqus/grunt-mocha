@@ -22,21 +22,13 @@
     'end'
   ];
 
-  // Send messages to the parent phantom.js process via alert! Good times!!
-  function sendMessage() {
-    var cache = [];
-    var args = [].slice.call(arguments);
-
-    // Safe stringifying of cyclical JSON
-    function decycle(key, val) {
-      if (typeof val === 'object' && val !== null) {
-        if (cache.indexOf(val) >= 0) return;
-        cache.push(val);
-      }
-      return val;
-    }
-
-    alert(JSON.stringify(args, decycle));
+  // Send messages to the parent phantom.js process via callPhantom
+  // http://phantomjs.org/api/webpage/handler/on-callback.html
+  function sendMessage(cmd, data) {
+    window.callPhantom({
+      cmd: cmd,
+      data: data
+    });
   }
 
   // Create a listener who'll bubble events from PhantomJS to Grunt

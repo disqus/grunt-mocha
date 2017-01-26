@@ -68,21 +68,15 @@ page.onUrlChanged = function(newUrl) {
   sendMessage('onUrlChanged', newUrl);
 };
 
-// The client page must send its messages via alert(jsonstring).
-page.onAlert = function(str) {
-  // The only thing that should ever alert "inject" is the custom event
+page.onCallback = function(msg) {
+  // The only thing that should ever use "inject" is the custom event
   // handler this script adds to be executed on DOMContentLoaded.
-  if (str === 'inject') {
+  if (msg.cmd === 'inject') {
     inject();
     return;
   }
-  // Otherwise, parse the specified message string and send it back to grunt.
-  // Unless there's a parse error. Then, complain.
-  try {
-    sendMessage(JSON.parse(str));
-  } catch(err) {
-    sendMessage('error.invalidJSON', str);
-  }
+  // Otherwise, relay it to grunt.
+  sendMessage(msg.cmd, msg.data);
 };
 
 // Relay console logging messages.
@@ -129,8 +123,8 @@ page.onInitialized = function() {
   // injected before any other DOMContentLoaded or window.load event handler.
   page.evaluate(function() {
     /*jshint browser:true, devel:true */
-    document.addEventListener('DOMContentLoaded', function() {
-      alert('inject');
+    document.addEventListener('DOMContentLoaded', function () {
+      window.callPhantom({ cmd: 'inject' });
     }, false);
   });
 };
