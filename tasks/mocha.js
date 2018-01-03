@@ -48,7 +48,7 @@ module.exports = function(grunt) {
 
     // Hook on Phantomjs Mocha reporter events.
     phantomjs.on('mocha.*', function(test) {
-      var name, fullTitle, slow, err;
+      var name, titlePath, fullTitle, slow, err;
       var evt = this.event.replace('mocha.', '');
 
       if (evt === 'end') {
@@ -57,6 +57,11 @@ module.exports = function(grunt) {
 
       // Expand test values (and façace the Mocha test object)
       if (test) {
+        titlePath = test.titlePath;
+        test.titlePath = function() {
+          return titlePath;
+        };
+
         fullTitle = test.fullTitle;
         test.fullTitle = function() {
           return fullTitle;

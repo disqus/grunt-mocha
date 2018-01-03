@@ -40,6 +40,7 @@
 
       if (test) {
         data.title = test.title;
+        data.titlePath = test.titlePath();
         data.fullTitle = test.fullTitle();
         data.state = test.state;
         data.duration = test.duration;
