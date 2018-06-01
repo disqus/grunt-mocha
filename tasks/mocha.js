@@ -142,6 +142,8 @@ module.exports = function(grunt) {
       bail: false,
       // Log script errors as grunt errors
       logErrors: false,
+      // Growl notification when tests fail.
+      growlOnFail: true,
       // Growl notification when tests pass.
       growlOnSuccess: true,
       // Run tests, set to false if you would rather call `mocha.run` yourself
@@ -270,11 +272,13 @@ module.exports = function(grunt) {
                 ' tests failed (' + reduced.duration + 's)';
 
               // Show Growl notice, if avail
-              growl(failMsg, {
-                image: asset('growl/error.png'),
-                title: 'Failure in ' + grunt.task.current.target,
-                priority: 3
-              });
+              if (options.growlOnFail) {
+                growl(failMsg, {
+                  image: asset('growl/error.png'),
+                  title: 'Failure in ' + grunt.task.current.target,
+                  priority: 3
+                });
+              }
 
               // Bail tests if bail option is true
               if (options.bail) grunt.warn(failMsg);
@@ -294,8 +298,8 @@ module.exports = function(grunt) {
         console.log = consoleLog;
 
         if (!grunt.file.exists(dest)) {
-            // Write only if our reporter ignored our `output` option
-            grunt.file.write(dest, output.join('\n'));
+          // Write only if our reporter ignored our `output` option
+          grunt.file.write(dest, output.join('\n'));
         }
       }
       var stats = helpers.reduceStats(testStats);
@@ -321,11 +325,13 @@ module.exports = function(grunt) {
           stats.duration + 's)';
 
         // Show Growl notice, if avail
-        growl(failMsg, {
-          image: asset('growl/error.png'),
-          title: failMsg,
-          priority: 3
-        });
+        if (options.growlOnFail) {
+          growl(failMsg, {
+            image: asset('growl/error.png'),
+            title: failMsg,
+            priority: 3
+          });
+        }
 
         // Bail tests if bail option is true
         if (options.bail) {
