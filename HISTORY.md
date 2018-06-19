@@ -1,5 +1,11 @@
 # History
 
+## 1.1.0
+* Add growlOnFail option
+
+## 1.0.5
+* Adding titlePath in bridge to handle reporting of test failures
+
 ## 1.0.0
 * Bump mocha to 2.4.5
 * [BREAKING] Bump grunt-lib-phantomjs to master, uses PhantomJS 2.x
