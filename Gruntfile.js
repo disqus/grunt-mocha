@@ -35,7 +35,14 @@ module.exports = function(grunt) {
       // In this example, there's only one, but you can add as many as
       // you want. You can split them up into different groups here
       // ex: admin: [ 'test/admin.html' ]
-      all: ['example/test/**/!(test2|testBail|testPage).html'],
+      all: {
+        // Test files
+        src: ['example/test/**/!(test2|testBail|testPage).html'],
+        options: {
+            growlOnFail: false,
+            growlOnSuccess: false
+        }
+      },
 
       // Runs 'test/test2.html' with specified mocha options.
       // This variant auto-includes 'bridge.js' so you do not have
@@ -51,6 +58,8 @@ module.exports = function(grunt) {
             ignoreLeaks: false,
             grep: 'food'
           },
+          growlOnFail: false,
+          growlOnSuccess: false,
 
           reporter: 'Spec',
           timeout: 10000
@@ -65,6 +74,8 @@ module.exports = function(grunt) {
             ignoreLeaks: false,
             grep: 'food'
           },
+          growlOnFail: false,
+          growlOnSuccess: false,
 
           reporter: 'Nyan',
 
@@ -81,6 +92,9 @@ module.exports = function(grunt) {
             ignoreLeaks: false,
             grep: 'food'
           },
+          growlOnFail: false,
+          growlOnSuccess: false,
+
           reporter: './example/test/reporter/simple',
         }
       },
@@ -93,6 +107,9 @@ module.exports = function(grunt) {
             ignoreLeaks: false,
             grep: 'food'
           },
+          growlOnFail: false,
+          growlOnSuccess: false,
+
           log: true
         }
       },
@@ -102,6 +119,9 @@ module.exports = function(grunt) {
         src: ['example/test/test2.html'],
         dest: 'example/test/results/spec.out',
         options: {
+          growlOnFail: false,
+          growlOnSuccess: false,
+
           reporter: 'Spec',
         }
       },
@@ -109,6 +129,9 @@ module.exports = function(grunt) {
       // Same as above, but with URLS + Xunit
       testDest2: {
         options: {
+          growlOnFail: false,
+          growlOnSuccess: false,
+
           reporter: 'XUnit',
 
           // URLs passed through as options
@@ -122,6 +145,9 @@ module.exports = function(grunt) {
         src: ['example/test/testBail.html'],
         // Bail option
         options: {
+          growlOnFail: false,
+          growlOnSuccess: false,
+
           bail: true
         }
       },
@@ -135,6 +161,9 @@ module.exports = function(grunt) {
       testPage: {
         src: ['example/test/testPage.html'],
         options: {
+          growlOnFail: false,
+          growlOnSuccess: false,
+
           page: {
             settings: {
               userAgent: 'grunt-mocha-agent'
