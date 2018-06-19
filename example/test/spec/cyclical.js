@@ -7,6 +7,6 @@ describe('Cyclical JSON', function() {
 
         expect(function() {
           expect(luke).property('mother', 'Padmé');
-        }).to.throw("expected { Object (name, sister) } to have a property 'mother'");
+        }).to.throw("expected { Object (name, sister) } to have property 'mother'");
     });
 });
