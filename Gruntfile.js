@@ -12,7 +12,8 @@ module.exports = function(grunt) {
     jshint: {
       all: [
         'Gruntfile.js',
-        'tasks/**/*.js', ],
+        'tasks/**/*.js'
+      ],
       options: {
         jshintrc: '.jshintrc'
       }
@@ -80,7 +81,7 @@ module.exports = function(grunt) {
           reporter: 'Nyan',
 
           // URLs passed through as options
-          urls: ['http://localhost:' + port + '/example/test/test2.html'],
+          urls: ['http://localhost:' + port + '/example/test/test2.html']
         }
       },
 
@@ -95,7 +96,7 @@ module.exports = function(grunt) {
           growlOnFail: false,
           growlOnSuccess: false,
 
-          reporter: './example/test/reporter/simple',
+          reporter: './example/test/reporter/simple'
         }
       },
 
@@ -122,7 +123,7 @@ module.exports = function(grunt) {
           growlOnFail: false,
           growlOnSuccess: false,
 
-          reporter: 'Spec',
+          reporter: 'Spec'
         }
       },
 
@@ -135,7 +136,7 @@ module.exports = function(grunt) {
           reporter: 'XUnit',
 
           // URLs passed through as options
-          urls: ['http://localhost:' + (port + 1) + '/example/test/test2.html'],
+          urls: ['http://localhost:' + (port + 1) + '/example/test/test2.html']
         },
         dest: 'example/test/results/xunit.out'
       },
@@ -154,7 +155,7 @@ module.exports = function(grunt) {
 
       // This test should never run
       neverTest: {
-        src: ['example/test/test.html'],
+        src: ['example/test/test.html']
       },
 
       // Test page options
@@ -213,7 +214,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-connect');
 
-
   grunt.task.registerTask('testUrls', ['connect:testUrls', 'mocha:testUrls']);
   grunt.task.registerTask('testLog', ['mocha:testLog']);
   grunt.task.registerTask('testReporter', ['mocha:testReporter']);
@@ -232,7 +232,7 @@ module.exports = function(grunt) {
     'testLog',
     'testReporter',
     'testDest',
-    'testPage',
+    'testPage'
   ]);
 
   // By default, lint and run all tests.
