@@ -32,14 +32,14 @@
   },
   "dependencies": {
     "grunt-lib-phantomjs": "^1.1.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.11",
     "mocha": "^5.2.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "grunt": "^1.0.3",
-    "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-jshint": "^1.1.0"
+    "grunt-contrib-connect": "^2.0.0",
+    "grunt-contrib-jshint": "^2.0.0"
   },
   "keywords": [
     "gruntplugin",
