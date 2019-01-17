@@ -1,5 +1,8 @@
 # History
 
+## 1.2.0
+* Add support for node 10
+
 ## 1.1.0
 * Add growlOnFail option
 

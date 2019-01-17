@@ -1,7 +1,7 @@
 {
   "name": "grunt-mocha",
   "description": "Grunt task for running client-side Mocha specs in PhantomJS",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "homepage": "https://github.com/disqus/grunt-mocha",
   "author": {
     "name": "Kelly Miyashiro",
